@@ -1,0 +1,34 @@
+<ion-header class="custom-header">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="custom-background">
+  
+  <div class="login-container">
+    <ion-item class="custom-item">
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="username"></ion-input>
+    </ion-item>
+  
+    <ion-item class="custom-item">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="custom-button" (click)="login()">Iniciar sesión</ion-button>
+    <ion-button expand="block" fill="clear" class="clear-button" (click)="goToResetPassword()">Restablecer contraseña</ion-button>
+  </div>
+
+  <ion-button expand="block" fill="outline" color="primary" class="social-button">
+    <ion-icon name="logo-facebook" slot="start"></ion-icon>
+    Iniciar sesión con Facebook
+  </ion-button>
+  
+  <ion-button expand="block" fill="outline" color="danger" class="social-button">
+    <ion-icon name="logo-google" slot="start"></ion-icon>
+    Iniciar sesión con Google
+  </ion-button>
+  
+</ion-content>

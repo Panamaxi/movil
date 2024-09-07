@@ -1,0 +1,122 @@
+.custom-header {
+    --background: linear-gradient(135deg, #0d0d0d, #1a1a1a); /* Gradiente sutil en el header */
+    --color: #ff1e1e; /* Color del texto en el header, un rojo más vibrante */
+    --box-shadow: 0 4px 15px rgba(255, 30, 30, 0.3); /* Sombra elegante en el header */
+  }
+  
+  .custom-background {
+    background: linear-gradient(135deg, #1e9400, #00ff48); /* Gradiente de fondo refinado */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-container {
+    width: 100%;
+    max-width: 1400px;
+    padding: 80px;
+    background: rgba(0, 0, 0, 0.85); /* Fondo negro semi-transparente con menor opacidad */
+    border-radius: 25px; /* Bordes más redondeados */
+    box-shadow: 0 20px 25px rgba(255, 255, 255, 0.1); /* Sombra más pronunciada */
+    backdrop-filter: blur(30px); /* Efecto de desenfoque más suave */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .login-container:hover {
+    transform: scale(1.08); /* Efecto de zoom más pronunciado */
+    box-shadow: 0 50px 80px rgba(0, 0, 0, 0.5); /* Sombra más intensa en hover */
+  }
+  
+  .custom-item ion-label {
+    color: #ff4c4c; /* Rojo más vibrante */
+    font-weight: bold;
+  }
+  
+  .custom-item ion-input {
+    color: #ff4c4c; /* Mantener coherencia con el color del label */
+  }
+  
+  .custom-button {
+    margin-top: 40px;
+    background: linear-gradient(135deg, #ff0077, #7b1fa2); /* Gradiente más llamativo */
+    color: white;
+    border-radius: 50px;
+    padding: 15px 30px; /* Aumenta el padding para un look más premium */
+    transition: background 0.4s ease, transform 0.4s ease;
+    box-shadow: 0 10px 20px rgba(255, 0, 119, 0.3); /* Sombra en el botón */
+  }
+  
+  .custom-button:hover {
+    background: linear-gradient(135deg, #7b1fa2, #ff0077); /* Intercambio de colores en hover */
+    transform: scale(1.1); /* Mayor efecto de zoom */
+    box-shadow: 0 15px 30px rgba(123, 31, 162, 0.4); /* Sombra más intensa en hover */
+  }
+  
+  .clear-button {
+    color: #ff0000;
+    margin-top: 20px;
+    font-size: 1.1em; /* Aumentar tamaño de fuente para mayor visibilidad */
+    transition: color 0.3s ease;
+  }
+  
+  .clear-button:hover {
+    color: #ffffff; /* Cambio de color en hover */
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7); /* Efecto de brillo en hover */
+  }
+  .login-container {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .custom-button {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .custom-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+    pointer-events: none;
+  }
+  
+  .custom-button:hover::before {
+    left: 50%;
+    top: 50%;
+    transition: all 0.5s ease;
+  }
+  .custom-item ion-input {
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  
+  .custom-item ion-input:focus {
+    border-color: #ff4081; /* Color de borde brillante */
+    box-shadow: 0 0 10px rgba(255, 64, 129, 0.5);
+  }
+  
+  .custom-item ion-label {
+    color: #c50b0b;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  
