@@ -1,6 +1,5 @@
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
@@ -16,12 +15,120 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-
-  color: #8c8c8c;
-
+  color: #f70a0a;
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
+}
+
+.custom-header {
+  background: linear-gradient(135deg, #0d0d0d, #a80404);
+  color: #ff1e1e;
+  box-shadow: 0 4px 15px rgba(255, 30, 30, 0.3);
+}
+
+.custom-background {
+  background: linear-gradient(135deg, #1e9400, #ff0000);
+  height: 150%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 1500px;
+  padding: 100px;
+  background: rgba(6, 176, 162, 0.682);
+  border-radius: 25px;
+  box-shadow: 0 20px 25px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.login-container:hover {
+  transform: scale(1.08);
+  box-shadow: 0 50px 80px rgba(0, 0, 0, 0.5);
+}
+
+.custom-item ion-label {
+  color: #ff4c4c;
+  font-weight: bold;
+}
+
+.custom-item ion-input {
+  color: #ff4c4c;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.custom-item ion-input:focus {
+  border-color: #ff4081;
+  box-shadow: 0 0 10px rgba(255, 64, 129, 0.5);
+}
+
+.custom-button {
+  margin-top: 40px;
+  background: linear-gradient(135deg, #ff0077, #7b1fa2);
+  color: white;
+  border-radius: 50px;
+  padding: 15px 30px;
+  transition: background 0.4s ease, transform 0.4s ease;
+  box-shadow: 0 10px 20px rgba(255, 0, 119, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.custom-button:hover::before {
+  left: 50%;
+  top: 50%;
+  transition: all 0.5s ease;
+}
+
+.custom-button:hover {
+  background: linear-gradient(135deg, #7b1fa2, #ff0077);
+  transform: scale(1.1);
+  box-shadow: 0 15px 30px rgba(123, 31, 162, 0.4);
+}
+
+.clear-button {
+  color: #ff0000;
+  margin-top: 20px;
+  font-size: 1.1em;
+  transition: color 0.3s ease;
+}
+
+.clear-button:hover {
+  color: #ffffff;
+  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

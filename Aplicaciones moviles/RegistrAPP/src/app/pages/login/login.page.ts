@@ -14,7 +14,7 @@ export class LoginPage {
   constructor(private router: Router, private alertController: AlertController) {}
 
   async login() {
-    if (this.username === 'DuocUC' && this.password === 'duoc123') {
+    if (this.username === 'Nara' && this.password === 'duoc1234') {
       localStorage.setItem('username', this.username);
       console.log('Nombre de usuario guardado:', this.username);
       this.router.navigate(['/home']);
@@ -23,7 +23,7 @@ export class LoginPage {
         header: 'Error',
         message: 'Usuario o contraseña incorrectos',
         buttons: ['OK'],
-        cssClass: 'custom-alert' // Aplicar clase personalizada
+        cssClass: 'custom-alert' // nueva clase
       });
       await alert.present();
     }
