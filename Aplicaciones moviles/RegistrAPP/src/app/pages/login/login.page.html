@@ -7,28 +7,30 @@
 <ion-content class="custom-background">
   
   <div class="login-container">
-    <ion-item class="custom-item">
-      <ion-label position="floating">name user</ion-label>
-      <ion-input [(ngModel)]="username"></ion-input>
-    </ion-item>
+    <mat-form-field appearance="outline" class="custom-item">
+      <mat-label>Nombre de usuario</mat-label>
+      <input matInput [(ngModel)]="username">
+    </mat-form-field>
   
-    <ion-item class="custom-item">
-      <ion-label position="floating">password</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
+    <mat-form-field appearance="outline" class="custom-item">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" [(ngModel)]="password">
+    </mat-form-field>
 
-    <ion-button expand="block" class="custom-button" (click)="login()">Iniciar sesión</ion-button>
-    <ion-button expand="block" fill="clear" class="clear-button" (click)="goToResetPassword()">Restablecer contraseña</ion-button>
+    <button mat-raised-button class="custom-button" (click)="login()">Iniciar sesión</button>
+    <button mat-button class="clear-button" (click)="goToResetPassword()">Restablecer contraseña</button>
   </div>
 
-  <ion-button expand="block" fill="outline" color="primary" class="social-button">
-    <ion-icon name="logo-facebook" slot="start"></ion-icon>
-    Iniciar sesión con Facebook
-  </ion-button>
-  
-  <ion-button expand="block" fill="outline" color="danger" class="social-button">
-    <ion-icon name="logo-google" slot="start"></ion-icon>
-    Iniciar sesión con Google
-  </ion-button>
+  <div class="login-container">
+    <button mat-stroked-button class="social-button">
+      <ion-icon name="logo-facebook" slot="start"></ion-icon>
+      Iniciar sesión con Facebook
+    </button>
+
+    <button mat-stroked-button class="social-button">
+      <ion-icon name="logo-google" slot="start"></ion-icon>
+      Iniciar sesión con Google
+    </button>
+  </div>
   
 </ion-content>
