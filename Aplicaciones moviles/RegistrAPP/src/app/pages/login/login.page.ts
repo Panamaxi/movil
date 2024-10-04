@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-
+//import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,7 +14,7 @@ export class LoginPage {
   constructor(private router: Router, private alertController: AlertController) {}
 
   async login() {
-    if (this.username === 'Narayani Garcia' && this.password === 'duoc1234') {
+    if (this.username === 'Nara' && this.password === 'duoc1234') {
       localStorage.setItem('username', this.username);
       console.log('Nombre de usuario guardado:', this.username);
       this.router.navigate(['/home']);
