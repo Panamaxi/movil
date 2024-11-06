@@ -2,35 +2,31 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { AppRoutingModule } from './app-routing.module';
+import { IonicStorageModule } from '@ionic/storage-angular';
 import { AppComponent } from './app.component';
-
-// Importaciones de Angular Material
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-
-// Importación de animaciones
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthService } from './auth.service';
+import { CanActivateGuard } from './canactivate.guard';
+import { CanDeactivateGuard } from './candeactivate.guard';
+import { CanMatchGuard } from './canmatch.guard';
+import { StorageService } from './services/storage.service'; // Importamos StorageService
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
+    BrowserModule, 
+    IonicModule.forRoot(), 
     AppRoutingModule,
-
-    // Módulos de Angular Material
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
+    IonicStorageModule.forRoot()
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    
-    // Proveedor de animaciones
-    provideAnimationsAsync()
+    AuthService,
+    CanActivateGuard,
+    CanDeactivateGuard,
+    CanMatchGuard,
+    StorageService // Añadimos StorageService a los providers
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

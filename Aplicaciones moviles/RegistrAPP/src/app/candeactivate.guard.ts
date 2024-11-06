@@ -1,5 +1,15 @@
-import { CanDeactivateFn } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanDeactivate } from '@angular/router';
 
-export const candeactivateGuard: CanDeactivateFn<unknown> = (component, currentRoute, currentState, nextState) => {
-  return true;
-};
+export interface CanComponentDeactivate {
+  canDeactivate: () => boolean;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CanDeactivateGuard implements CanDeactivate<CanComponentDeactivate> {
+  canDeactivate(component: CanComponentDeactivate): boolean {
+    return component.canDeactivate ? component.canDeactivate() : true;
+  }
+}

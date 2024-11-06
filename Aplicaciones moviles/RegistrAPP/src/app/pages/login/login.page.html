@@ -1,17 +1,20 @@
-<ion-header class="custom-header">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-title>Mi Aplicación</ion-title>
+    <ion-buttons slot="end" *ngIf="isAuthenticated">
+      <ion-button (click)="logout()">Cerrar sesión</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="custom-background">
-  
+<ion-content>
+  <!-- Contenido existente -->
   <div class="login-container">
     <mat-form-field appearance="outline" class="custom-item">
       <mat-label>Nombre de usuario</mat-label>
       <input matInput [(ngModel)]="username">
     </mat-form-field>
-  
+
     <mat-form-field appearance="outline" class="custom-item">
       <mat-label>Contraseña</mat-label>
       <input matInput type="password" [(ngModel)]="password">
@@ -32,5 +35,17 @@
       Iniciar sesión con Google
     </button>
   </div>
-  
+
+  <!-- Nuevos botones -->
+  <div class="login-container">
+    <button mat-raised-button class="custom-button" (click)="loginUser('ejemplo@email.com', 'password123')">
+      Login y guardar usuario
+    </button>
+    <button mat-raised-button class="custom-button" (click)="getUsernameFromStorage()">
+      Obtener usuario guardado
+    </button>
+    <button mat-raised-button class="custom-button" (click)="clearStorage()">
+      Limpiar storage
+    </button>
+  </div>
 </ion-content>
