@@ -53,17 +53,17 @@ export class ApiService {
     return this.http.get<Post>(`${this.apiUrl}/posts/${id}`);
   }
 
-  // Actualizar un post
+  
   updatePost(id: number, post: Post): Observable<Post> {
     return this.http.put<Post>(`${this.apiUrl}/posts/${id}`, post);
   }
 
-  // Eliminar un post
+  
   deletePost(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/posts/${id}`);
   }
 
-  // Método para añadir headers de autorización si es necesario
+  
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
     return new HttpHeaders({
@@ -72,7 +72,7 @@ export class ApiService {
     });
   }
 
-  // Ejemplo de método con headers de autorización
+  
   getProtectedResource(): Observable<any> {
     return this.http.get(`${this.apiUrl}/protected-resource`, {
       headers: this.getHeaders()
