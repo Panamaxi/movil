@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { StorageService } from '../../services/storage.service';
+import { ApiService } from '../../services/api.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +14,14 @@ export class LoginPage implements OnInit {
   username: string = '';
   password: string = '';
   isAuthenticated: boolean = false;
+  useApi: boolean = (environment as any).useApi; // Esta es la única línea que cambia// Añade esta variable en tu environment
 
   constructor(
     private router: Router, 
     private alertController: AlertController,
     private toastController: ToastController,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private apiService: ApiService
   ) {}
 
   async ngOnInit() {
@@ -43,18 +47,53 @@ export class LoginPage implements OnInit {
       return;
     }
 
-    if (this.username === 'Nara' && this.password === '12345') {
-      const fakeToken = 'fake-jwt-token';
-      await this.storageService.set('authToken', fakeToken);
-      await this.storageService.set('username', this.username);
-      this.isAuthenticated = true;
-      this.router.navigate(['/home']);
+    if (this.useApi) {
+      // Usar API
+      this.apiService.login(this.username, this.password).subscribe(
+        async (response) => {
+          await this.handleSuccessfulLogin(response.token);
+        },
+        async (error) => {
+          console.error('Error de login:', error);
+          await this.showAlert('Error', 'Usuario o contraseña incorrectos');
+        }
+      );
     } else {
-      await this.showAlert('Error', 'Usuario o contraseña incorrectos');
+      // Usar login simulado
+      if (this.username === 'Nara' && this.password === '12345') {
+        const fakeToken = 'fake-jwt-token';
+        await this.handleSuccessfulLogin(fakeToken);
+      } else {
+        await this.showAlert('Error', 'Usuario o contraseña incorrectos');
+      }
     }
   }
 
+  private async handleSuccessfulLogin(token: string) {
+    await this.storageService.set('authToken', token);
+    await this.storageService.set('username', this.username);
+    this.isAuthenticated = true;
+    await this.showToast('Inicio de sesión exitoso');
+    this.router.navigate(['/home']);
+  }
+
   async logout() {
+    if (this.useApi) {
+      this.apiService.logout().subscribe(
+        async () => {
+          await this.handleLogout();
+        },
+        async (error) => {
+          console.error('Error en logout:', error);
+          await this.showAlert('Error', 'Error al cerrar sesión');
+        }
+      );
+    } else {
+      await this.handleLogout();
+    }
+  }
+
+  private async handleLogout() {
     await this.clearStorage();
     this.isAuthenticated = false;
     await this.showToast('Sesión cerrada exitosamente');
@@ -66,21 +105,57 @@ export class LoginPage implements OnInit {
   }
 
   loginWithFacebook() {
-    console.log('Inicio de sesión con Facebook');
-    // Implementar lógica de inicio de sesión con Facebook
+    if (this.useApi) {
+      this.apiService.loginWithFacebook().subscribe(
+        async (response) => {
+          await this.handleSuccessfulLogin(response.token);
+        },
+        async (error) => {
+          console.error('Error en login con Facebook:', error);
+          await this.showAlert('Error', 'Error al iniciar sesión con Facebook');
+        }
+      );
+    } else {
+      console.log('Inicio de sesión con Facebook (simulado)');
+      // Implementar simulación si es necesario
+    }
   }
 
   loginWithGoogle() {
-    console.log('Inicio de sesión con Google');
-    // Implementar lógica de inicio de sesión con Google
+    if (this.useApi) {
+      this.apiService.loginWithGoogle().subscribe(
+        async (response) => {
+          await this.handleSuccessfulLogin(response.token);
+        },
+        async (error) => {
+          console.error('Error en login con Google:', error);
+          await this.showAlert('Error', 'Error al iniciar sesión con Google');
+        }
+      );
+    } else {
+      console.log('Inicio de sesión con Google (simulado)');
+      // Implementar simulación si es necesario
+    }
   }
 
-  // Nuevas funciones implementadas
   async loginUser(email: string, password: string) {
-    // Aquí simularías el proceso de login
-    await this.storageService.set('username', email);
-    console.log('Usuario guardado');
-    await this.showToast('Usuario guardado exitosamente');
+    if (this.useApi) {
+      this.apiService.login(email, password).subscribe(
+        async (response) => {
+          await this.storageService.set('username', email);
+          await this.storageService.set('authToken', response.token);
+          await this.showToast('Usuario autenticado exitosamente');
+        },
+        async (error) => {
+          console.error('Error en loginUser:', error);
+          await this.showAlert('Error', 'Error al autenticar usuario');
+        }
+      );
+    } else {
+      await this.storageService.set('username', email);
+      console.log('Usuario guardado (simulado)');
+      await this.showToast('Usuario guardado exitosamente');
+    }
   }
 
   async getUsernameFromStorage() {
@@ -100,7 +175,6 @@ export class LoginPage implements OnInit {
     await this.showToast('Almacenamiento limpiado');
   }
 
-  // Funciones auxiliares para mostrar alertas y toasts
   private async showAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       header,

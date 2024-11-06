@@ -8,8 +8,34 @@
   <div class="image">
     <ion-img src="assets/icon/images.jpeg"></ion-img>
   </div>
+  
   <div id="container">
     <h1>Bienvenido, {{ username }}!</h1>
     <p>Esta es la página de inicio de RegistrAPP.</p>
   </div>
+
+  <!-- Sección de Posts -->
+  <ion-list>
+    <ion-item-divider>
+      <ion-label>
+        <h2>Posts Recientes</h2>
+      </ion-label>
+    </ion-item-divider>
+    
+    <ion-item *ngFor="let post of posts">
+      <ion-label>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.body }}</p>
+      </ion-label>
+      <ion-button fill="outline" slot="end" (click)="editPost(post.id)">
+        Editar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/create">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
