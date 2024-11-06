@@ -21,17 +21,17 @@ export class StorageService {
     this._storage?.set(key, value);
   }
 
-  // Obtener datos
+  
   public async get(key: string) {
     return await this._storage?.get(key);
   }
 
-  // Eliminar un item específico
+  
   public remove(key: string) {
     this._storage?.remove(key);
   }
 
-  // Limpiar todo el storage
+ 
   public clear() {
     this._storage?.clear();
   }

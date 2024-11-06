@@ -117,7 +117,7 @@ export class LoginPage implements OnInit {
       );
     } else {
       console.log('Inicio de sesión con Facebook (simulado)');
-      // Implementar simulación si es necesario
+      
     }
   }
 
@@ -134,7 +134,7 @@ export class LoginPage implements OnInit {
       );
     } else {
       console.log('Inicio de sesión con Google (simulado)');
-      // Implementar simulación si es necesario
+      
     }
   }
 

@@ -9,7 +9,7 @@ export class CanMatchGuard implements CanMatch {
   constructor(private authService: AuthService) {}
 
   canMatch(route: Route, segments: UrlSegment[]): boolean {
-    // Ejemplo: permitir solo si el usuario está autenticado y cumple una condición adicional
+    
     return this.authService.isLoggedIn();
   }
 }

@@ -10,7 +10,7 @@ export class AppComponent {
   isAuthenticated: boolean = false;
 
   constructor(private router: Router) {
-    // Verificamos si el usuario está autenticado al cargar la app
+   
     this.isAuthenticated = !!localStorage.getItem('username');
   }
 

@@ -4,11 +4,11 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-// Middleware
+
 app.use(cors());
 app.use(bodyParser.json());
 
-// Rutas
+
 app.post('/api/posts', (req, res) => {
     try {
         console.log('Post recibido:', req.body);
@@ -27,7 +27,7 @@ app.post('/api/posts', (req, res) => {
 
 app.get('/api/posts', (req, res) => {
     res.json([
-        // aquí irían tus posts
+        
     ]);
 });
 

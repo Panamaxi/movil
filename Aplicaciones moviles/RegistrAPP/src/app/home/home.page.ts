@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
   ionViewWillEnter() {
     this.username = localStorage.getItem('username') || 'Usuario';
     console.log('Nombre de usuario actualizado:', this.username);
-    // Recargar los posts cada vez que se entre a la página
+    
     this.loadPosts();
   }
 
@@ -42,6 +42,6 @@ export class HomePage implements OnInit {
 
   editPost(postId: number) {
     console.log('Editando post:', postId);
-    // Implementar la navegación a la página de edición
+    
   }
 }
