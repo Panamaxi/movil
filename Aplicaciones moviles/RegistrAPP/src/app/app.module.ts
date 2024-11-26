@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { CanActivateGuard } from './canactivate.guard';
 import { CanDeactivateGuard } from './candeactivate.guard';
 import { CanMatchGuard } from './canmatch.guard';
