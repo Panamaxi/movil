@@ -1,5 +1,6 @@
+<!-- login.component.html -->
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="custom-header">
     <ion-title>Mi Aplicación</ion-title>
     <ion-buttons slot="end" *ngIf="isAuthenticated">
       <ion-button (click)="logout()">Cerrar sesión</ion-button>
@@ -7,45 +8,54 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <!-- Contenido existente -->
+<ion-content class="custom-background">
+  <!-- Formulario de login -->
   <div class="login-container">
-    <mat-form-field appearance="outline" class="custom-item">
-      <mat-label>Nombre de usuario</mat-label>
-      <input matInput [(ngModel)]="username">
-    </mat-form-field>
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="custom-item">
+        <mat-label>Nombre de usuario</mat-label>
+        <input matInput [(ngModel)]="username">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="custom-item">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" [(ngModel)]="password">
+      </mat-form-field>
+      
+      <div class="action-buttons">
+        <button mat-raised-button class="custom-button" (click)="login()">
+          Iniciar sesión
+        </button>
+        <button mat-button class="clear-button" (click)="goToResetPassword()">
+          Restablecer contraseña
+        </button>
+      </div>
+    </div>
 
-    <mat-form-field appearance="outline" class="custom-item">
-      <mat-label>Contraseña</mat-label>
-      <input matInput type="password" [(ngModel)]="password">
-    </mat-form-field>
+    <!-- Botones sociales -->
+    <div class="social-buttons">
+      <button mat-stroked-button class="social-button">
+        <ion-icon name="logo-facebook" slot="start"></ion-icon>
+        Iniciar sesión con Facebook
+      </button>
+      
+      <button mat-stroked-button class="social-button">
+        <ion-icon name="logo-google" slot="start"></ion-icon>
+        Iniciar sesión con Google
+      </button>
+    </div>
 
-    <button mat-raised-button class="custom-button" (click)="login()">Iniciar sesión</button>
-    <button mat-button class="clear-button" (click)="goToResetPassword()">Restablecer contraseña</button>
-  </div>
-
-  <div class="login-container">
-    <button mat-stroked-button class="social-button">
-      <ion-icon name="logo-facebook" slot="start"></ion-icon>
-      Iniciar sesión con Facebook
-    </button>
-
-    <button mat-stroked-button class="social-button">
-      <ion-icon name="logo-google" slot="start"></ion-icon>
-      Iniciar sesión con Google
-    </button>
-  </div>
-
-  <!-- Nuevos botones -->
-  <div class="login-container">
-    <button mat-raised-button class="custom-button" (click)="loginUser('ejemplo@email.com', 'password123')">
-      Login y guardar usuario
-    </button>
-    <button mat-raised-button class="custom-button" (click)="getUsernameFromStorage()">
-      Obtener usuario guardado
-    </button>
-    <button mat-raised-button class="custom-button" (click)="clearStorage()">
-      Limpiar storage
-    </button>
+    <!-- Botones de gestión -->
+    <div class="management-buttons">
+      <button mat-raised-button class="custom-button" (click)="loginUser('ejemploa@email.com', 'password123')">
+        Login y guardar usuario
+      </button>
+      <button mat-raised-button class="custom-button" (click)="getUsernameFromStorage()">
+        Obtener usuario guardado
+      </button>
+      <button mat-raised-button class="custom-button" (click)="clearStorage()">
+        Limpiar storage
+      </button>
+    </div>
   </div>
 </ion-content>
