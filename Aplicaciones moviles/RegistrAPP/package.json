@@ -34,8 +34,10 @@
     "@ionic/angular": "^8.0.0",
     "@ionic/storage-angular": "^4.0.0",
     "@techiediaries/ngx-qrcode": "^9.1.0",
+    "angularx-qrcode": "^19.0.0",
     "ionicons": "^7.0.0",
     "ngx-qrcode2": "^9.0.0",
+    "qrcode": "^1.5.4",
     "rxjs": "^7.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
@@ -53,6 +55,7 @@
     "@capacitor/cli": "^6.1.2",
     "@ionic/angular-toolkit": "^11.0.1",
     "@types/jasmine": "~5.1.0",
+    "@types/qrcode": "^1.5.5",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.57.0",

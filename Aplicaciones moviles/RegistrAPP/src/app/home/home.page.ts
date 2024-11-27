@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import * as QRCode from 'qrcode'; // Importa la biblioteca QRCode
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,7 @@ import { ApiService } from '../services/api.service';
 export class HomePage implements OnInit {
   username: string = '';
   posts: any[] = [];
+  qrCodeData: string = ''; // Variable para almacenar el código QR generado
 
   constructor(private apiService: ApiService) {}
 
@@ -17,6 +19,9 @@ export class HomePage implements OnInit {
     this.username = localStorage.getItem('username') || 'Usuario';
     console.log('Nombre de usuario recuperado:', this.username);
 
+    // Generar el código QR con un dato inicial
+    this.generateQRCode('https://example.com');
+
     // Cargar los posts
     this.loadPosts();
   }
@@ -24,10 +29,11 @@ export class HomePage implements OnInit {
   ionViewWillEnter() {
     this.username = localStorage.getItem('username') || 'Usuario';
     console.log('Nombre de usuario actualizado:', this.username);
-    
+
     this.loadPosts();
   }
 
+  // Método para cargar los posts
   loadPosts() {
     this.apiService.getPosts().subscribe(
       (data: any) => {
@@ -40,8 +46,20 @@ export class HomePage implements OnInit {
     );
   }
 
+  // Método para editar un post
   editPost(postId: number) {
     console.log('Editando post:', postId);
-    
+  }
+
+  // Método para generar el código QR
+  generateQRCode(data: string) {
+    QRCode.toDataURL(data, { errorCorrectionLevel: 'M', width: 256 })
+      .then((url) => {
+        this.qrCodeData = url; // Guarda la URL del código QR generado
+        console.log('Código QR generado:', this.qrCodeData);
+      })
+      .catch((err) => {
+        console.error('Error generando el código QR:', err);
+      });
   }
 }

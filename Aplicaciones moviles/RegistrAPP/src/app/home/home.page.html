@@ -5,10 +5,17 @@
 </ion-header>
 
 <ion-content class="custom-background">
+  <!-- Contenedor del Código QR -->
+  <div class="qr-container">
+    <h2>Código QR</h2>
+    <img [src]="qrCodeData" alt="Código QR" *ngIf="qrCodeData" />
+  </div>
+
+  <!-- Imagen principal -->
   <div class="image">
     <ion-img src="assets/icon/images.jpeg"></ion-img>
   </div>
-  
+
   <div id="container">
     <h1>Bienvenido, {{ username }}!</h1>
     <p>Esta es la página de inicio de RegistrAPP.</p>
@@ -21,7 +28,7 @@
         <h2>Posts Recientes</h2>
       </ion-label>
     </ion-item-divider>
-    
+
     <ion-item *ngFor="let post of posts">
       <ion-label>
         <h2>{{ post.title }}</h2>

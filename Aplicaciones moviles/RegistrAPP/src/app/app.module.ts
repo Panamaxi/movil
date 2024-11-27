@@ -16,7 +16,6 @@ import { StorageService } from './services/storage.service';
 import { ApiService } from './services/api.service';
 
 
-
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +23,6 @@ import { ApiService } from './services/api.service';
   imports: [
     BrowserModule,
     FormsModule,
-    
     ReactiveFormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
