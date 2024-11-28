@@ -24,7 +24,7 @@ export class CreatePage {
       content: this.body
     };
 
-    // Generamos los datos para el QR (puedes cambiarlo por cualquier otra propiedad que desees mostrar en el QR)
+   
     this.qrData = `Título: ${this.title}\nContenido: ${this.body}`;
 
     this.apiService.createPost(newPost).subscribe({

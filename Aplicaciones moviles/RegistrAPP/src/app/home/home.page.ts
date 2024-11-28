@@ -19,7 +19,7 @@ export class HomePage implements OnInit {
     this.username = localStorage.getItem('username') || 'Usuario';
     console.log('Nombre de usuario recuperado:', this.username);
 
-    // Generar el código QR con la información personalizada
+    
     this.generateQRCode();
 
     // Cargar los posts
@@ -33,7 +33,7 @@ export class HomePage implements OnInit {
     this.loadPosts();
   }
 
-  // Método para cargar los posts
+  
   loadPosts() {
     this.apiService.getPosts().subscribe(
       (data: any) => {
@@ -46,14 +46,14 @@ export class HomePage implements OnInit {
     );
   }
 
-  // Método para editar un post
+  
   editPost(postId: number) {
     console.log('Editando post:', postId);
   }
 
-  // Método para generar el código QR
+ 
   generateQRCode() {
-    const data = "Alumno: Nara, Asignatura: Programación Móvil"; // Información que deseas codificar
+    const data = "Alumno: Nara, Asignatura: Programación Móvil"; 
     QRCode.toDataURL(data, { errorCorrectionLevel: 'M', width: 256 })
       .then((url: string) => {
         this.qrCodeData = url; // Guarda la URL del código QR generado

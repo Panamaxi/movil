@@ -19,7 +19,7 @@ describe('StorageService', () => {
     service = TestBed.inject(StorageService);
     storageSpy = TestBed.inject(Storage) as jasmine.SpyObj<Storage>;
 
-    // Simula la inicialización del almacenamiento
+   
     storageSpy.create.and.resolveTo(storageSpy);
   });
 

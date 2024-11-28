@@ -27,7 +27,7 @@ describe('CanMatchGuard', () => {
   });
 
   it('should allow matching if the user is logged in', () => {
-    // Simular que el usuario está autenticado
+    
     authService.isLoggedIn.and.returnValue(true);
 
     const route: Route = { path: 'protected' };
@@ -40,7 +40,7 @@ describe('CanMatchGuard', () => {
   });
 
   it('should prevent matching if the user is not logged in', () => {
-    // Simular que el usuario no está autenticado
+    
     authService.isLoggedIn.and.returnValue(false);
 
     const route: Route = { path: 'protected' };

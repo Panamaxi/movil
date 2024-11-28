@@ -29,7 +29,7 @@ describe('HomePage', () => {
   });
 
   it('should generate QR code on ngOnInit', async () => {
-    // Mock explícito de QRCode.toDataURL
+    
     spyOn(QRCode, 'toDataURL').and.callFake(() => Promise.resolve('mockQRCodeURL'));
   
     await component.generateQRCode();

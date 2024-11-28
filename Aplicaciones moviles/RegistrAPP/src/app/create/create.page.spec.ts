@@ -46,14 +46,14 @@ describe('CreatePage', () => {
     const mockResponse = { id: 1, title: 'Test Title', content: 'Test Content' };
     apiService.createPost.and.returnValue(of(mockResponse));
 
-    // Establecer valores para title y body
+  
     component.title = 'Test Title';
     component.body = 'Test Content';
 
-    // Llamar a la función createPost
+   
     component.createPost();
 
-    // Verificar que se llamó a createPost en el ApiService con los datos correctos
+    
     expect(apiService.createPost).toHaveBeenCalledWith({
       title: 'Test Title',
       content: 'Test Content',
@@ -62,7 +62,7 @@ describe('CreatePage', () => {
     // Verificar que se generaron los datos del QR correctamente
     expect(component.qrData).toBe('Título: Test Title\nContenido: Test Content');
 
-    // Verificar que se navegó a la página de inicio
+    
     expect(router.navigate).toHaveBeenCalledWith(['/home']);
   });
 
@@ -75,22 +75,21 @@ describe('CreatePage', () => {
     component.title = 'Test Title';
     component.body = 'Test Content';
 
-    // Espiar la consola para verificar el mensaje de error
+   
     spyOn(console, 'error');
 
-    // Llamar a la función createPost
+   
     component.createPost();
 
-    // Verificar que se llamó a createPost en el ApiService con los datos correctos
     expect(apiService.createPost).toHaveBeenCalledWith({
       title: 'Test Title',
       content: 'Test Content',
     });
 
-    // Verificar que se imprimió el error en la consola
+    
     expect(console.error).toHaveBeenCalledWith('Error al crear el post', mockError);
 
-    // Verificar que no se navegó a la página de inicio
+   
     expect(router.navigate).not.toHaveBeenCalled();
   });
 });

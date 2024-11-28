@@ -32,7 +32,7 @@ describe('CanActivateGuard', () => {
   });
 
   it('should allow activation if the user is logged in', () => {
-    // Simular que el usuario está autenticado
+    
     authService.isLoggedIn.and.returnValue(true);
 
     const result = guard.canActivate();
@@ -43,7 +43,7 @@ describe('CanActivateGuard', () => {
   });
 
   it('should block activation and redirect if the user is not logged in', () => {
-    // Simular que el usuario no está autenticado
+   
     authService.isLoggedIn.and.returnValue(false);
 
     const result = guard.canActivate();
