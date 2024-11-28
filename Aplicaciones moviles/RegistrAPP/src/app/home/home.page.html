@@ -6,11 +6,11 @@
 
 <ion-content class="custom-background">
   <!-- Contenedor del Código QR -->
-  <div class="qr-container">
-    <h2>Código QR</h2>
-    <img [src]="qrCodeData" alt="Código QR" *ngIf="qrCodeData" />
+   <!-- Contenedor del Código QR -->
+   <div class="qr-container" *ngIf="qrCodeData">
+    <h2>Código QR Generado:</h2>
+    <img [src]="qrCodeData" alt="Código QR generado">
   </div>
-
   <!-- Imagen principal -->
   <div class="image">
     <ion-img src="assets/icon/images.jpeg"></ion-img>
